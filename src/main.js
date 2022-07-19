@@ -3,53 +3,20 @@
  * ==================================================
  * Github API
  * Git My Information and Repos from my Accout in Github.com 
- * using Promise
+ * using Feach
  * 
  * https://api.github.com/users/MohamedShehataAbdalla
  * https://api.github.com/users/MohamedShehataAbdalla/repos 
  * ==================================================
  */
 
- let url =  "https://cors-anywhere.herokuapp.com/https://api.github.com/users/MohamedShehataAbdalla";
+let url =  "https://cors-anywhere.herokuapp.com/https://api.github.com/users/MohamedShehataAbdalla/repos";
 
-const getRepoData = (apiLink) => {
-    return new Promise((resolve, reject) => {
-        
-            /**
-             * ==================================================
-             * Git All Public Repos from my Accout in Github.com
-             * ==================================================
-             */
-            
-            
-            let myRequestRepos = new XMLHttpRequest();
-            myRequestRepos.onload = function (){
-            
-                if(this.readyState == 4 && this.status == 200) {
-                    
-                    resolve(JSON.parse(this.responseText));
-                    
-                } else {
-                    reject(Error("No Data Found"));
-                }
-            };
-            
-            /**
-             * ==================================================
-             * send Requestes to  Github.com
-             * ==================================================
-             */
-                        
-            myRequestRepos.open("GET", apiLink+"/repos");
-            myRequestRepos.send();
-
-    });
-};
-
-
-
-
-getRepoData(url).then((result) => {
+fetch(url).then((result) => {
+    let myData = result.json();
+    return myData;
+})
+.then((result) => {
     result.length = 10;
     return result;
 })
@@ -95,101 +62,4 @@ getRepoData(url).then((result) => {
         section.appendChild(div);
     }
     document.body.appendChild(section);
-
-}).catch((rej) => console.log(rej));
-
-
-// const getInfoData = (apiLink) => {
-//     return new Promise((resolve, reject) => {
-        
-//             /**
-//              * ==================================================
-//              * Git My Information from my Accout in Github.com 
-//              * ==================================================
-//              */
-
-//             let myRequestInfo = new XMLHttpRequest();
-//             myRequestInfo.onload = function (){
-            
-//                 if(this.readyState == 4 && this.status == 200) {
-                    
-//                     resolve(JSON.parse(this.responseText));
-            
-//                 } else {
-//                     reject(Error("No Data Found"));
-//                 }
-//             };
-            
-//             /**
-//              * ==================================================
-//              * send Requestes to  Github.com
-//              * ==================================================
-//              */
-            
-//             myRequestInfo.open("GET", apiLink);
-//             myRequestInfo.send();
-
-//     });
-// };
-
-
-
-
-// getInfoData(url).then((result) => {
-//     result.length = 1;
-//     return result;
-// })
-// .then((result) => {
-//     console.log(result);
-
-
-//     let profile = document.createElement("div");
-//     profile.classList.add('profile');
-
-//     let name = document.createElement("p");
-//     name.classList.add('name');
-//     let nameText = document.createTextNode(result.name);
-//     name.appendChild(nameText);
-
-//     let username = document.createElement("p");
-//     username.classList.add('username');
-//     let usernameText = document.createTextNode(result.login);
-//     username.appendChild(usernameText);
-
-//     let bio = document.createElement("p");
-//     bio.classList.add('bio');
-//     let bioText = document.createTextNode(result.bio);
-//     bio.appendChild(bioText);
-
-//     let avatar = document.createElement("img");
-//     avatar.src = result.avatar_url;
-//     avatar.alt = result.login;
-//     avatar.width = "120";
-//     avatar.height = "120";
-
-//     let profilelink = document.createElement("a");
-//     profilelink.classList.add('link');
-//     profilelink.href = result.html_url;
-//     let profilelinkText = document.createTextNode(result.html_url);
-//     profilelink.appendChild(profilelinkText);
-    
-//     profile.appendChild(avatar);
-//     profile.appendChild(name);
-//     profile.appendChild(username);
-//     profile.appendChild(bio);
-//     profile.appendChild(profilelink);
-//     document.body.appendChild(profile);
-
-// }).catch((rej) => console.log(rej));
-
-
-
-
-
-
-
-
-
-
-
-
+});

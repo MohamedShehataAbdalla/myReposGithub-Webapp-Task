@@ -1,0 +1,73 @@
+*{
+    box-sizing: border-box; 
+    margin: 0; 
+    padding: 0;
+}
+
+body{
+    background-image: linear-gradient(to right, #1f2c3b, #546f8f); 
+    color: #FFF;
+}
+
+.profile {
+    margin: 100px auto; 
+    width: 60%; 
+    text-align: center; 
+}
+
+.profile img { 
+    width: 120px; 
+    height: 120px; 
+    margin-bottom: 10px;
+}
+
+.profile .name { 
+    margin-bottom: 10px;
+}
+
+.profile .username { 
+    margin-bottom: 20px;
+}
+
+.profile .bio { 
+    margin-bottom: 15px;
+}
+
+.profile .link {  
+    color: green;
+}
+
+section {
+    margin: 100px auto; 
+    width: 60%; 
+}
+
+section .item{
+    background-color: rgba(255, 255, 255, 0.1); 
+    margin-bottom: 20px; 
+    border-radius: 20px; 
+    padding: 20px 30px; 
+}
+
+section .item .repo-name{ 
+    margin-bottom: 20px;
+}
+section .item .date{ 
+    margin-bottom: 10px;
+}
+
+section .item .lang{ 
+    margin-bottom: 10px;
+}
+
+section .item .size{ 
+    margin-bottom: 10px;
+}
+
+section .item .details{ 
+    margin-bottom: 20px;
+}
+
+section .item .link {  
+    color: #999; 
+}
